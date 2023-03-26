@@ -23,6 +23,7 @@ module Import
   , Value(..)
   , decode
   , encode
+  , toHashMapText
   -- Data.Text
   , Text
   -- Control.Monad.Catch
@@ -56,6 +57,7 @@ import Control.Monad.IO.Class
 import Control.Monad.Catch (MonadMask)
 import Control.Retry
 import Data.Aeson (Value(..), decode,encode)
+import Data.Aeson.KeyMap (toHashMapText)
 import Data.ByteString as B (concat) 
 import Data.ByteString.Lazy as BL (toStrict, fromStrict)
 import Data.HashMap.Strict as H (toList)

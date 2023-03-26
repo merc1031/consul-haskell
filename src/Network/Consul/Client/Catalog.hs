@@ -130,7 +130,7 @@ getServices _client@ConsulClient{..} tag = do
         bodyParts <- brConsume $ responseBody response
         return $ parseServices tag $ decode $ BL.fromStrict $ B.concat bodyParts
   where
-    parseServices t (Just (Object v)) = filterTags t $ H.toList v
+    parseServices t (Just (Object v)) = filterTags t $ H.toList $ toHashMapText v
     parseServices _   _               = []
     filterTags :: Maybe Text -> [(Text, Value)] -> [Text]
     filterTags (Just t)               = map fst . filter (\ (_, (Array v)) -> (String t) `V.elem` v)
